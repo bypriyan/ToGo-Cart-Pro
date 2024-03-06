@@ -55,5 +55,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 fun GreetingPreview() {
     ToGoCartProTheme {
         Greeting("Hello Android !")
+        // fROM MY sIDE
     }
 }
