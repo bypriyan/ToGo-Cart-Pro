@@ -104,27 +104,27 @@ fun IntroScreen() {
                         contentScale = ContentScale.Fit,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(300.dp))
+                            .height(500.dp))
 
                     //title
                     Text(text = list.get(page).title,
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(10.dp),
-                        color = darkGrey,
+                        color = background,
                         fontWeight = FontWeight.ExtraBold,
-                        fontSize = 30.sp,
+                        fontSize = 22.sp,
                         textAlign = TextAlign.Center,
                     )
                     //desc
                     Text(text = list.get(page).description,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(10.dp),
-                        color = background,
+                        textAlign = TextAlign.Justify,
+                        color = darkGrey,
                         fontWeight = FontWeight.Medium,
                         fontSize =15.sp,
-                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(10.dp,10.dp,10.dp,10.dp)
                     )
                 }
                 // Our page content
@@ -134,21 +134,4 @@ fun IntroScreen() {
 
     }
 
-}
-
-
-@Composable
-fun loadImg( url : String){
-    AsyncImage(model = url,
-        contentDescription = null,
-        contentScale = ContentScale.Fit,
-        modifier = Modifier.fillMaxSize())
-}
-
-@Composable
-fun Greeting2(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
 }
