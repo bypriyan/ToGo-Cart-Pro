@@ -35,8 +35,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
+
                 // A surface container using the 'background' color from the theme
-                 Box(
+        
+
+                Box(
+
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.TopCenter
                 ) {
@@ -52,6 +56,12 @@ fun loadImg( url : String){
         contentScale = ContentScale.Fit,
         modifier = Modifier.fillMaxSize())
 }
+
+@Composable
+fun AsyncImage(model: String, contentDescription: Nothing?, contentScale: ContentScale, modifier: Modifier) {
+
+}
+
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
@@ -65,7 +75,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             .fillMaxWidth()
             .padding(10.dp)
 
-        modifier= Modifier.background(color = Color.Blue)
+       
 
     )
 }

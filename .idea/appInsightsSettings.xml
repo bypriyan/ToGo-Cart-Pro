@@ -27,10 +27,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.bypriyan.togocartpro" />
+                  <option name="mobileSdkAppId" value="1:748203192981:android:ad09b6cb9c8e166e17619c" />
+                  <option name="projectId" value="togo-cart-pro" />
+                  <option name="projectNumber" value="748203192981" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
