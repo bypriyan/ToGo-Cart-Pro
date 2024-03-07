@@ -27,7 +27,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import coil.compose.AsyncImage
 import com.bypriyan.togocartpro.ui.theme.ToGoCartProTheme
 import com.bypriyan.togocartpro.ui.theme.appColor
 
@@ -37,7 +36,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
                 // A surface container using the 'background' color from the theme
-                Box(
+                 Box(
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.TopCenter
                 ) {
@@ -61,9 +60,13 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         fontWeight = FontWeight.Black,
         fontSize = 30.sp,
         textAlign = TextAlign.Center,
+
         modifier = modifier
             .fillMaxWidth()
             .padding(10.dp)
+
+        modifier= Modifier.background(color = Color.Blue)
+
     )
 }
 
