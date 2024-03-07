@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "748203192981",
+    "project_id": "togo-cart-pro",
+    "storage_bucket": "togo-cart-pro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748203192981:android:ad09b6cb9c8e166e17619c",
+        "android_client_info": {
+          "package_name": "com.bypriyan.togocartpro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKTUoGY7LzEJx0eeQGx-GGeAcIZXp7HQE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
