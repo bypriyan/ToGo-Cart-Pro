@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -89,13 +90,30 @@ fun showStartScreen(){
         .fillMaxHeight()
         .background(Color.White)
         .verticalScroll(rememberScrollState())) {
-        
-        Image(painter = painterResource(id = R.drawable.login_sc_women_bg_img)
-            , contentDescription =null,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(500.dp),
-            alignment = Alignment.TopCenter)
+
+        Box (modifier = Modifier
+            .fillMaxWidth()
+            .height(500.dp)){
+
+            Image(painter = painterResource(id = R.drawable.solid_bottom_circle_bg)
+                , contentDescription =null,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight(),
+                alignment = Alignment.TopCenter,
+                contentScale = ContentScale.FillBounds)
+
+            Image(painter = painterResource(id = R.drawable.new_login_sc_women_ng)
+                , contentDescription =null,
+                modifier = Modifier
+                    .width(400.dp)
+                    .fillMaxHeight()
+                    .align(Alignment.BottomCenter),
+                alignment = Alignment.BottomCenter)
+
+        }
+
+
 
         val text = buildAnnotatedString {
             pushStyle(SpanStyle(color = Color.Black))
@@ -131,15 +149,16 @@ fun showStartScreen(){
             modifier = Modifier
                 .fillMaxWidth()
                 .height(80.dp)
-                .padding(10.dp, 20.dp, 10.dp,0.dp)
+                .padding(10.dp, 20.dp, 10.dp, 0.dp)
                 .align(Alignment.CenterHorizontally),
             shape = RoundedCornerShape(20.dp),
             colors = ButtonDefaults.buttonColors(colorResource(id = R.color.appColor))
         ) {
             Text(text = "Let's Get Started")
         }
-        
+
     }
 
 }
+
 
