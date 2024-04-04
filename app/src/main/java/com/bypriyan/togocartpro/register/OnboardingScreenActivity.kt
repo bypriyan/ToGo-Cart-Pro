@@ -1,28 +1,20 @@
 package com.bypriyan.togocartpro.register
 
+import android.content.Intent
 import android.graphics.Paint.Align
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.pager.HorizontalPager
-import androidx.compose.foundation.pager.PagerState
-import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -39,29 +31,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import coil.compose.AsyncImage
-import coil.size.Scale
 import com.bypriyan.togocartpro.R
-import com.bypriyan.togocartpro.register.ui.theme.ToGoCartProTheme
-import com.bypriyan.togocartpro.ui.theme.appColor
-import com.bypriyan.togocartpro.ui.theme.background
-import com.bypriyan.togocartpro.ui.theme.blue
-import com.bypriyan.togocartpro.ui.theme.darkGrey
-import com.bypriyan.togocartpro.ui.theme.grey
-import com.bypriyan.togocartpro.ui.theme.liteGrey
+
+
+
 
 class OnboardingScreenActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,8 +60,13 @@ class OnboardingScreenActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     showStartScreen()
+
                 }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 
 }
@@ -84,6 +74,8 @@ class OnboardingScreenActivity : ComponentActivity() {
 @Preview()
 @Composable
 fun showStartScreen(){
+
+    var context = LocalContext.current
 
     Column(modifier = Modifier
         .fillMaxWidth()
@@ -145,7 +137,8 @@ fun showStartScreen(){
                 .padding(10.dp, 5.dp, 10.dp, 10.dp))
 
         Button(
-            onClick = { /* TODO */ },
+            onClick = {val intent = Intent(context, LoginActivity::class.java)
+                      context.startActivity(intent)},
             modifier = Modifier
                 .fillMaxWidth()
                 .height(80.dp)
@@ -160,5 +153,8 @@ fun showStartScreen(){
     }
 
 }
+
+
+
 
 
