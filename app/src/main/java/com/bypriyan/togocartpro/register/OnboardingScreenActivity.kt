@@ -67,7 +67,7 @@ class OnboardingScreenActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         installSplashScreen()
-
+        //this is new code
         setContent {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
