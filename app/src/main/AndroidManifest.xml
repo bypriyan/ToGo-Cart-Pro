@@ -18,7 +18,7 @@
         <activity
             android:name=".register.OnboardingScreenActivity"
             android:exported="true"
-            android:label="@string/title_activity_onboarding_screen"
+            android:label="@string/app_name"
             android:theme="@style/Theme.App.SplashScreen">
 
             <intent-filter>

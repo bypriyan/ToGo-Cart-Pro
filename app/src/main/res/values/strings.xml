@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">ToGo Cart pro</string>
-    <string name="title_activity_onboarding_screen">OnboardingScreenActivity</string>
+<!--    <string name="title_activity_onboarding_screen">OnboardingScreenActivity</string>-->
 </resources>

@@ -77,14 +77,14 @@ dependencies {
     implementation("io.coil-kt:coil-compose:2.6.0")
     // DataStore
     implementation("androidx.datastore:datastore-preferences:1.0.0")
-
     // Hilt
     implementation("com.google.dagger:hilt-android:2.48.1")
     kapt("com.google.dagger:hilt-compiler:2.48.1")
     // Navigation
     implementation("androidx.navigation:navigation-compose:2.7.7")
 
-
-
+    implementation("androidx.compose.material3:material3:1.2.1")
+    implementation("androidx.compose.material3:material3-window-size-class:1.2.1")
+    implementation("androidx.compose.material3:material3-adaptive-navigation-suite:1.0.0-alpha05")
 
 }
