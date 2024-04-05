@@ -60,14 +60,11 @@ class OnboardingScreenActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     showStartScreen()
-
                 }
         }
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-    }
+
 
 }
 
@@ -134,14 +131,16 @@ fun showStartScreen(){
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(10.dp, 5.dp, 10.dp, 10.dp))
+                .padding(10.dp, 5.dp, 10.dp, 10.dp),
+            fontSize = 14.sp)
 
         Button(
             onClick = {val intent = Intent(context, LoginActivity::class.java)
-                      context.startActivity(intent)},
+                      context.startActivity(intent)
+                      },
             modifier = Modifier
                 .fillMaxWidth()
-                .height(80.dp)
+                .height(70.dp)
                 .padding(10.dp, 20.dp, 10.dp, 0.dp)
                 .align(Alignment.CenterHorizontally),
             shape = RoundedCornerShape(20.dp),
