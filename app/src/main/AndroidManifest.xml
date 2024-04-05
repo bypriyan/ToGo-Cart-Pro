@@ -19,7 +19,7 @@
             android:name=".register.LoginActivity"
             android:exported="false"
             android:label="@string/title_activity_login"
-            android:theme="@style/Theme.App.SplashScreen" />
+            android:theme="@style/Theme.NoActionBar" />
         <activity
             android:name=".register.OnboardingScreenActivity"
             android:exported="true"

@@ -3,6 +3,7 @@ package com.bypriyan.togocartpro.register
 import android.content.Intent
 import android.graphics.Paint.Align
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -25,7 +26,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -43,6 +46,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.WindowCompat
 import com.bypriyan.togocartpro.R
 
 
@@ -53,7 +57,6 @@ class OnboardingScreenActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         installSplashScreen()
-        //this is new code
         setContent {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -73,7 +76,6 @@ class OnboardingScreenActivity : ComponentActivity() {
 fun showStartScreen(){
 
     var context = LocalContext.current
-
     Column(modifier = Modifier
         .fillMaxWidth()
         .fillMaxHeight()
@@ -131,7 +133,7 @@ fun showStartScreen(){
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(10.dp, 5.dp, 10.dp, 10.dp),
+                .padding(15.dp, 5.dp, 15.dp, 10.dp),
             fontSize = 14.sp)
 
         Button(
@@ -141,9 +143,9 @@ fun showStartScreen(){
             modifier = Modifier
                 .fillMaxWidth()
                 .height(70.dp)
-                .padding(10.dp, 20.dp, 10.dp, 0.dp)
+                .padding(15.dp, 20.dp, 15.dp, 0.dp)
                 .align(Alignment.CenterHorizontally),
-            shape = RoundedCornerShape(20.dp),
+            shape = RoundedCornerShape(15.dp),
             colors = ButtonDefaults.buttonColors(colorResource(id = R.color.appColor))
         ) {
             Text(text = "Let's Get Started")
