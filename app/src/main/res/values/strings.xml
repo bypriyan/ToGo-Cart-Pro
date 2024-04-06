@@ -2,5 +2,6 @@
     <string name="app_name">ToGo Cart pro</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_splash_screen">SplashScreenActivity</string>
+    <string name="title_activity_otpactivity">OTPActivity</string>
     <!--    <string name="title_activity_onboarding_screen">OnboardingScreenActivity</string>-->
 </resources>

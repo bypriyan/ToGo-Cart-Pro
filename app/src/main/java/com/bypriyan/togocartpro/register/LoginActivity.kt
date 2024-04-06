@@ -66,6 +66,9 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import com.airbnb.lottie.compose.rememberLottieDynamicProperty
 import com.bypriyan.togocartpro.R
 import com.bypriyan.togocartpro.register.ui.theme.ToGoCartProTheme
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class LoginActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,6 +80,10 @@ class LoginActivity : ComponentActivity() {
             ) {
                 showLoginScreen()
             }
+        }
+
+        CoroutineScope(Dispatchers.IO).launch {
+
         }
     }
 }
@@ -184,7 +191,8 @@ fun showLoginScreen(){
             .height(10.dp))
 
         Button(
-            onClick = {},
+            onClick = {var intent = Intent(context, OTPActivity::class.java)
+                      context.startActivity(intent)},
             modifier = Modifier
                 .fillMaxWidth()
                 .height(70.dp)
