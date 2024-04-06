@@ -47,7 +47,7 @@ class OTPActivity : ComponentActivity() {
         }
     }
 }
-@Preview()
+
 @Composable
 fun showOTPScreen(onBackpressedListner:()->Unit){
 
