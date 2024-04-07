@@ -137,7 +137,7 @@ fun showLoginScreen(){
 
         var phoneNumber by remember{ mutableStateOf("") }
         OutlinedTextField(value = phoneNumber, onValueChange = {
-            text->if(text.length<=10){
+                text->if(text.length<=10){
             phoneNumber=text
         }},
             modifier = Modifier
@@ -192,6 +192,7 @@ fun showLoginScreen(){
 
         Button(
             onClick = {var intent = Intent(context, OTPActivity::class.java)
+                        intent.putExtra("phoneNumber",phoneNumber)
                       context.startActivity(intent)},
             modifier = Modifier
                 .fillMaxWidth()
