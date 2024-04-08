@@ -1,6 +1,7 @@
 package com.bypriyan.togocartpro.register
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -41,8 +42,14 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.bypriyan.togocartpro.R
 import com.bypriyan.togocartpro.jetpack.topAppBar
+import com.google.firebase.FirebaseException
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthOptions
+import com.google.firebase.auth.PhoneAuthProvider
 import com.mukeshsolanki.OTP_VIEW_TYPE_BORDER
 import com.mukeshsolanki.OtpView
+import java.util.concurrent.TimeUnit
 
 class OTPActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,15 +60,48 @@ class OTPActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = colorResource(id = R.color.white)
                 ) {
-                    val data= intent.getStringExtra("phoneNumber")
+                    var data= intent.getStringExtra("phoneNumber")
                     if (data != null) {
                         otpLayout({ finish() },data)
+                        data = "+91"+data
+                        loginWithPhoneNumber(data)
                     }
                 }
         }
 
     }
 
+     fun loginWithPhoneNumber(phoneNumber:String){
+
+        val auth: FirebaseAuth = FirebaseAuth.getInstance()
+
+         var mCallbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
+
+         mCallbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
+             override fun onVerificationCompleted(p0: PhoneAuthCredential) {
+                 Toast.makeText(applicationContext,"onVerificationCompleted : {${p0.smsCode}}", Toast.LENGTH_LONG).show()
+             }
+
+             override fun onVerificationFailed(p0: FirebaseException) {
+                 Toast.makeText(applicationContext,"onVerificationFailed : {${p0.message}}", Toast.LENGTH_LONG).show()
+             }
+
+             override fun onCodeSent(p0: String, p1: PhoneAuthProvider.ForceResendingToken) {
+                 super.onCodeSent(p0, p1)
+                 Toast.makeText(applicationContext,"onCodeSent", Toast.LENGTH_LONG).show()
+
+             }
+         }
+
+
+        val options = PhoneAuthOptions.newBuilder(auth)
+            .setPhoneNumber(phoneNumber) // Phone number to verify
+            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+            .setActivity(this) // Activity (for callback binding)
+            .setCallbacks(mCallbacks) // OnVerificationStateChangedCallbacks
+            .build()
+        PhoneAuthProvider.verifyPhoneNumber(options)
+    }
 }
 
 @Composable
@@ -77,7 +117,7 @@ fun otpLayout(onBackPressedListener:()->Unit, data:String){
 
         Spacer(modifier = Modifier.height(80.dp))
 
-        Text(
+       var l =  Text(
             text = "We've sent verification code to",
             fontSize = 16.sp,
             color = colorResource(id = R.color.black),
