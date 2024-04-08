@@ -23,9 +23,14 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.materialIcon
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
@@ -54,6 +59,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
@@ -136,6 +142,7 @@ fun showLoginScreen(){
                 .height(30.dp))
 
         var phoneNumber by remember{ mutableStateOf("") }
+
         OutlinedTextField(value = phoneNumber, onValueChange = {
                 text->if(text.length<=10){
             phoneNumber=text
@@ -156,7 +163,7 @@ fun showLoginScreen(){
                         fontFamily = FontFamily(Font(R.font.bold)),
                         fontSize = 15.sp)
             },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone, imeAction = ImeAction.Done),
             colors =TextFieldDefaults.colors(
                 cursorColor = colorResource(id = R.color.black),
                 focusedTextColor = colorResource(id = R.color.black),
@@ -165,8 +172,16 @@ fun showLoginScreen(){
                 unfocusedTextColor = colorResource(id = R.color.dark_greay),
                 focusedIndicatorColor = colorResource(id = R.color.black),
                 unfocusedIndicatorColor = colorResource(id = R.color.black)),
-            shape = RoundedCornerShape(12.dp)
-            )
+            shape = RoundedCornerShape(12.dp),
+            trailingIcon = {
+                IconButton(onClick = { phoneNumber="" },
+                    enabled = phoneNumber.length>0) {
+                    Icon(
+                        imageVector = Icons.Filled.Clear,
+                        contentDescription = "Localized description"
+                    )
+                }
+            })
 
         Row (modifier = Modifier.padding(20.dp,0.dp,15.dp,0.dp)){
 
@@ -191,15 +206,19 @@ fun showLoginScreen(){
             .height(10.dp))
 
         Button(
-            onClick = {var intent = Intent(context, OTPActivity::class.java)
-                        intent.putExtra("phoneNumber",phoneNumber)
-                      context.startActivity(intent)},
+            onClick = {
+                if(phoneNumber.length==10){
+                    var intent = Intent(context, OTPActivity::class.java)
+                    intent.putExtra("phoneNumber",phoneNumber)
+                    context.startActivity(intent)
+                } },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(70.dp)
                 .padding(15.dp, 20.dp, 15.dp, 0.dp)
                 .align(Alignment.CenterHorizontally),
             shape = RoundedCornerShape(15.dp),
+            enabled = phoneNumber.length == 10,
             colors = ButtonDefaults.buttonColors(colorResource(id = R.color.appColor))
         ) {
             Text(text = "Send OTP")

@@ -102,4 +102,8 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation ("androidx.core:core-ktx:1.12.0")
+    //constraint layout
+    implementation ("androidx.constraintlayout:constraintlayout-compose:1.0.1")
+    //pin view
+    implementation ("com.github.mukeshsolanki.android-otpview-pinview:otpview-compose:3.1.0")
 }
